@@ -19,7 +19,7 @@ public class Consulta {
     private String dni;
 
     @ManyToOne
-    @JoinColumn(name = "id_cita")
+    @JoinColumn(name = "id_cita", referencedColumnName = "idCita")
     private Cita cita;
 
     
