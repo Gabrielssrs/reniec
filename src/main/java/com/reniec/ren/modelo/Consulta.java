@@ -21,4 +21,6 @@ public class Consulta {
     @ManyToOne
     @JoinColumn(name = "id_cita")
     private Cita cita;
+
+    
 }
