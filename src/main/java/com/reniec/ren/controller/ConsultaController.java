@@ -14,14 +14,24 @@ public class ConsultaController {
     @Autowired
     private ConsultaRepository consultaRepository;
 
+    public static class BusquedaRequest {
+        public String dni;
+        public Long cita;
+    }
+
     @PostMapping("/registrar")
     public String registrarConsulta(@RequestBody Consulta nuevoConsulta) {
         consultaRepository.save(nuevoConsulta);
         return "Consulta registrada correctamente con ID: " + nuevoConsulta.getId_consulta();
     }
 
-    @GetMapping("/buscar")
-    public Consulta buscarPorDniEIdCita(@RequestParam String dni, @RequestParam Long idCita) {
-        return consultaRepository.findByDniAndCitaId(dni, idCita);
+    @PostMapping("/buscar")
+    public Consulta buscarPorDniEIdCita(@RequestBody BusquedaRequest request) {
+        System.out.println("Buscando consulta con DNI: " + request.dni + " e ID Cita: " + request.cita);
+        Consulta resultado = consultaRepository.findByDniAndCitaId(request.dni, request.cita);
+        if (resultado == null) {
+            System.out.println("No se encontró consulta");
+        }
+        return resultado;
     }
 }
