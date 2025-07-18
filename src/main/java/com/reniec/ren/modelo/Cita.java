@@ -30,6 +30,6 @@ public class Cita {
     @ManyToOne
     @JoinColumn(name = "id_consulta")
     private Consulta id_consulta;
-
+    
 
 }

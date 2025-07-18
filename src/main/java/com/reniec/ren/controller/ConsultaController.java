@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.reniec.ren.modelo.Consulta;
 import com.reniec.ren.repository.ConsultaRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/consulta")
 public class ConsultaController {
@@ -17,5 +18,10 @@ public class ConsultaController {
     public String registrarConsulta(@RequestBody Consulta nuevoConsulta) {
         consultaRepository.save(nuevoConsulta);
         return "Consulta registrada correctamente con ID: " + nuevoConsulta.getId_consulta();
+    }
+
+    @GetMapping("/buscar")
+    public Consulta buscarPorDniEIdCita(@RequestParam String dni, @RequestParam Long id_cita) {
+        return consultaRepository.findByDniAndIdCita(dni, id_cita);
     }
 }

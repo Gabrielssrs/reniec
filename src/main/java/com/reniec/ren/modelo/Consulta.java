@@ -4,26 +4,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Builder;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Setter
-@Getter
 @Entity
-@Builder
 @Data
-
 public class Consulta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_consulta;
-    private String nombres;
-    private String apellido;
-    private String dni;
-    private String correo;
-    private String telefono;
 
+    private String dni;
+
+    private Long id_cita; // Este campo almacena el id de la cita asociada
+
+    @ManyToOne
+    @JoinColumn(name = "id_cita")
+    private Cita cita;
 }
