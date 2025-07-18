@@ -18,8 +18,6 @@ public class Consulta {
 
     private String dni;
 
-    private Long id_cita; // Este campo almacena el id de la cita asociada
-
     @ManyToOne
     @JoinColumn(name = "id_cita")
     private Cita cita;

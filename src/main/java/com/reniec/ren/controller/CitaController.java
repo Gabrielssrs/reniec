@@ -1,11 +1,9 @@
-
 package com.reniec.ren.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 import com.reniec.ren.modelo.Cita;
 import com.reniec.ren.repository.CitaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,24 +14,21 @@ public class CitaController {
     @Autowired
     private CitaRepository citaRepository;
 
+    // POST: Registrar una nueva cita
+    @PostMapping("/registrar")
+    public Cita registrarCita(@RequestBody Cita nuevaCita) {
+        return citaRepository.save(nuevaCita);
+    }
 
+    // GET: Obtener todas las citas
     @GetMapping
     public List<Cita> obtenerTodasLasCitas() {
         return citaRepository.findAll();
     }
 
-
-    @PostMapping("/registrar")
-    public String registrarCita(@RequestBody Cita nuevaCita) {
-        citaRepository.save(nuevaCita);
-        return "Cita registrada correctamente para el ciudadano con ID: " +
-                nuevaCita.getId_consulta().getId_consulta();
+    // GET: Obtener una cita por ID
+    @GetMapping("/{id}")
+    public Cita obtenerCitaPorId(@PathVariable Integer id) {
+        return citaRepository.findById(id).orElse(null);
     }
-
-    @GetMapping("/probar")
-    public String probarConexion() {
-        long total = citaRepository.count(); // consulta sencilla
-        return "Conectado a la BD. Total citas registradas: " + total;
-    }
-
 }
