@@ -25,7 +25,7 @@ public class ConsultaController {
         return "Consulta registrada correctamente con ID: " + nuevoConsulta.getId_consulta();
     }
 
-    @PostMapping("/buscar")
+    @GetMapping("/buscar")
     public Consulta buscarPorDniEIdCita(@RequestBody BusquedaRequest request) {
         System.out.println("Buscando consulta con DNI: " + request.dni + " e ID Cita: " + request.cita);
         Consulta resultado = consultaRepository.findByDniAndCitaId(request.dni, request.cita);
@@ -33,5 +33,10 @@ public class ConsultaController {
             System.out.println("No se encontró consulta");
         }
         return resultado;
+    }
+
+    @GetMapping("/todas")
+    public java.util.List<Consulta> obtenerTodasLasConsultas() {
+        return consultaRepository.findAll();
     }
 }
