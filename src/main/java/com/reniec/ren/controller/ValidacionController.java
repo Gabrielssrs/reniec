@@ -8,6 +8,7 @@ import com.reniec.ren.repository.ValidacionRepository;
 
 @RestController
 @RequestMapping("/validaciones")
+@CrossOrigin(origins = "*") 
 public class ValidacionController {
 
     @Autowired
