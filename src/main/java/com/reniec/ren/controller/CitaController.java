@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+    
 @RestController
 @RequestMapping("/citas")
 public class CitaController {
@@ -17,7 +17,10 @@ public class CitaController {
     // POST: Registrar una nueva cita
     @PostMapping("/registrar")
     public Cita registrarCita(@RequestBody Cita nuevaCita) {
-        return citaRepository.save(nuevaCita);
+        System.out.println("Datos recibidos: " + nuevaCita);
+        Cita citaGuardada = citaRepository.save(nuevaCita);
+        System.out.println("Cita guardada con ID: " + citaGuardada.getIdCita());
+        return citaGuardada;
     }
 
     // GET: Obtener todas las citas
