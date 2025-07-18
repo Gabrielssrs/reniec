@@ -15,7 +15,7 @@ public class Cita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_cita;
+    private Long id_cita;
 
     // Nuevos atributos personales
     private String nombres;

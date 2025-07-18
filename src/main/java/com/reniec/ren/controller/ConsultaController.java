@@ -21,7 +21,7 @@ public class ConsultaController {
     }
 
     @GetMapping("/buscar")
-    public Consulta buscarPorDniEIdCita(@RequestParam String dni, @RequestParam Long id_cita) {
-        return consultaRepository.findByDniAndIdCita(dni, id_cita);
+    public Consulta buscarPorDniEIdCita(@RequestParam String dni, @RequestParam Long idCita) {
+        return consultaRepository.findByDniAndCita_id_cita(dni, idCita);
     }
 }

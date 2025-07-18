@@ -28,7 +28,13 @@ public class CitaController {
 
     // GET: Obtener una cita por ID
     @GetMapping("/{id}")
-    public Cita obtenerCitaPorId(@PathVariable Integer id) {
+    public Cita obtenerCitaPorId(@PathVariable Long id) {
         return citaRepository.findById(id).orElse(null);
+    }
+
+    // DELETE: Eliminar una cita por ID
+    @DeleteMapping("/{id}")
+    public void eliminarCita(@PathVariable Long id) {
+        citaRepository.deleteById(id);
     }
 }
