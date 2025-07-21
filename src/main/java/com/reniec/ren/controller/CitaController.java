@@ -6,7 +6,9 @@ import com.reniec.ren.modelo.Funcionario;
 import com.reniec.ren.modelo.Oficina;
 import com.reniec.ren.repository.CitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Random;
@@ -61,5 +63,12 @@ public class CitaController {
     @DeleteMapping("/{id}")
     public void eliminarCita(@PathVariable Long id) {
         citaRepository.deleteById(id);
+    }
+
+    // GET: Obtener una cita por DNI y UBIGEO
+    @GetMapping("/buscar")
+    public Cita obtenerCitaPorDniYUbigeo(@RequestParam String dni, @RequestParam String ubigeo) {
+        return citaRepository.findByNumeroDocumentoAndUbigeo(dni, ubigeo)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró una cita con el DNI y UBIGEO proporcionados."));
     }
 }
