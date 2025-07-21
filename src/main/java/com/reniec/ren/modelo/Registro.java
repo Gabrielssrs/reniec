@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+
 @Data
 @Table(name = "Registro")
 
@@ -23,10 +24,6 @@ public class Registro {
     
     @Column(name = "fecha_registro")
     private LocalDateTime date;
-    
-    // Constructor vacío para JPA
-    public Registro() {
-    }
     
     // Establece fecha automáticamente antes de guardar
     @PrePersist
