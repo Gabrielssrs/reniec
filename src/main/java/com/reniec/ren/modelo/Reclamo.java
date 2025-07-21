@@ -16,7 +16,9 @@ public class Reclamo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id_reclamo;
+    
     private String nombre; 
     private String apellido;
     private String dni;

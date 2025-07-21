@@ -17,6 +17,6 @@ public class RegistroController {
     @PostMapping("/registrar")
     public String registrarValidacion(@RequestBody Registro nuevaValidacion) {
         validacionRepository.save(nuevaValidacion);
-        return "Validación registrada correctamente con ID: " + nuevaValidacion.getId_validacion();
+        return "Registro registrada correctamente con ID: " + nuevaValidacion.getId_validacion();
     }
 }
