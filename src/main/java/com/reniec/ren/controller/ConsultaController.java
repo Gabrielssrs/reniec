@@ -14,17 +14,10 @@ public class ConsultaController {
     @Autowired
     private ConsultaRepository consultaRepository;
 
-    
     @PostMapping("/registrar")
     public String registrarConsulta(@RequestBody Consulta nuevoConsulta) {
         consultaRepository.save(nuevoConsulta);
         return "Consulta registrada correctamente con ID: " + nuevoConsulta.getId_consulta();
-    }
-
-
-    @GetMapping("/todas")
-    public java.util.List<Consulta> obtenerTodasLasConsultas() {
-        return consultaRepository.findAll();
     }
 
     @GetMapping("/{id}")
