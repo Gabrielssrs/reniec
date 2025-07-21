@@ -7,7 +7,7 @@ import com.reniec.ren.modelo.Registro;
 import com.reniec.ren.repository.RegistroRepository;
 
 @RestController
-@RequestMapping("/validaciones")
+@RequestMapping("/registro")
 @CrossOrigin(origins = "*") 
 public class RegistroController {
 

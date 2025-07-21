@@ -1,15 +1,19 @@
 package com.reniec.ren.controller;
 
 import com.reniec.ren.modelo.Cita;
+import com.reniec.ren.modelo.Estado;
+import com.reniec.ren.modelo.Funcionario;
+import com.reniec.ren.modelo.Oficina;
 import com.reniec.ren.repository.CitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/citas")
-@CrossOrigin(origins = "*") 
+@CrossOrigin(origins = "*")
 public class CitaController {
 
     @Autowired
@@ -18,6 +22,23 @@ public class CitaController {
     // POST: Registrar una nueva cita
     @PostMapping("/registrar")
     public Cita registrarCita(@RequestBody Cita nuevaCita) {
+        Random random = new Random();
+
+        // Asignar un funcionario aleatorio (ID entre 1 y 8)
+        Funcionario funcionario = new Funcionario();
+        funcionario.setId_funcionario(random.nextInt(8) + 1);
+        nuevaCita.setFuncionario(funcionario);
+
+        // Asignar una oficina aleatoria (ID entre 1 y 8)
+        Oficina oficina = new Oficina();
+        oficina.setId_oficina(random.nextInt(8) + 1);
+        nuevaCita.setOficina(oficina);
+
+        // Asignar el estado "registrado" (ID 1)
+        Estado estado = new Estado();
+        estado.setId_estado(1);
+        nuevaCita.setEstado(estado);
+
         System.out.println("Datos recibidos: " + nuevaCita);
         Cita citaGuardada = citaRepository.save(nuevaCita);
         System.out.println("Cita guardada con ID: " + citaGuardada.getIdCita());

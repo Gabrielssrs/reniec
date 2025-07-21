@@ -26,7 +26,12 @@ public class Cita {
     private String correo_electronico;
     private String numero_telefono;
     
-    private LocalDateTime date;
+    private LocalDateTime fechaRegistro;
+
+    @PrePersist
+    protected void onCreate() {
+        this.fechaRegistro = LocalDateTime.now();
+    }
 
     // Relaciones
     @ManyToOne
@@ -40,4 +45,6 @@ public class Cita {
     @ManyToOne
     @JoinColumn(name = "id_funcionario")
     private Funcionario funcionario;
+
+    
 }
