@@ -7,6 +7,13 @@ import org.springframework.data.repository.query.Param;
 
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 
-    @Query("SELECT c FROM Consulta c WHERE c.dni = :dni AND c.cita.idCita = :idCita")
-    Consulta findByDniAndCitaId(@Param("dni") String dni, @Param("idCita") Long idCita);
+    // Buscar por ID de cita
+    @Query("SELECT c FROM Consulta c WHERE c.cita.idCita = :idCita")
+    Consulta findByCitaId(@Param("idCita") Long idCita);
+    
+    // Buscar por tipo de consulta
+    java.util.List<Consulta> findByTipoConsulta(String tipoConsulta);
+    
+    // Buscar por tipo de trámite
+    java.util.List<Consulta> findByTipoTramite(String tipoTramite);
 }

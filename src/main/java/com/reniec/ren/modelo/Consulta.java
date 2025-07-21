@@ -4,9 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
 import lombok.Data;
 
 @Entity
@@ -18,11 +16,9 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_consulta;
 
-    private String dni;
+    private String tipo_consulta;
+    private String tipo_tramite;
+    private String detalle_tramite;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cita", referencedColumnName = "idCita")
-    private Cita cita;
-
-    
+   
 }

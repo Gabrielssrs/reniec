@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -16,15 +16,15 @@ public class Reclamo {
 
     @Id
     private Integer id_reclamo;
-
+    private String nombre; 
+    private String apellido;
+    private String dni;
+    private LocalDate fecha_registro;
+    
     @Column(length = 300)
     private String descripcion;
 
-    private Date fecha_registro;
-    private Integer estado_reclamo;
-    private String respuesta;
-
     @ManyToOne
-    @JoinColumn(name = "id_ciudadano")
-    private Consulta ciudadano;
+    @JoinColumn(name = "estado_reclamo")
+    private Estado estado;
 }
