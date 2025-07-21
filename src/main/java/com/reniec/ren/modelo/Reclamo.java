@@ -28,6 +28,6 @@ public class Reclamo {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "estado_reclamo")
+    @JoinColumn(name = "id_estado")
     private Estado estado;
 }
