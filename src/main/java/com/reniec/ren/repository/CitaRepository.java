@@ -7,6 +7,6 @@ import java.util.Optional;
 import com.reniec.ren.modelo.Cita;
 
 public interface CitaRepository extends JpaRepository<Cita, Long> {
-    Optional<Cita> findByNumeroDocumento(String numeroDocumento);
+    Optional<Cita> findByNumero_documento(String numero_documento);
 }
 
