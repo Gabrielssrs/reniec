@@ -68,7 +68,7 @@ public class CitaController {
     // GET: Obtener una cita por DNI
     @GetMapping("/buscar")
     public Cita obtenerCitaPorDni(@RequestParam String dni) {
-        return citaRepository.findByNumero_documento(dni)
+        return citaRepository.findByNumeroDocumento(dni)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró una cita con el DNI proporcionado."));
     }
 }

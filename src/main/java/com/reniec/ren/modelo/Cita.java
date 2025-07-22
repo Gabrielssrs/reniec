@@ -17,15 +17,20 @@ public class Cita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_cita")
     private Long idCita;
 
     // Atributos personales
     private String nombres;
     private String apellidos;
-    private String numero_documento;
-    private String correo_electronico;
-    private String numero_telefono;
+    @Column(name = "numero_documento")
+    private String numeroDocumento;
+    @Column(name = "correo_electronico")
+    private String correoElectronico;
+    @Column(name = "numero_telefono")
+    private String numeroTelefono;
     
+    @Column(name = "fecha_registro")
     private LocalDateTime fechaRegistro;
 
     @PrePersist
