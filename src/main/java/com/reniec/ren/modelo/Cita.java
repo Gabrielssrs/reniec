@@ -25,7 +25,6 @@ public class Cita {
     private String numero_documento;
     private String correo_electronico;
     private String numero_telefono;
-    private String ubigeo;
     
     private LocalDateTime fechaRegistro;
 

@@ -65,10 +65,10 @@ public class CitaController {
         citaRepository.deleteById(id);
     }
 
-    // GET: Obtener una cita por DNI y UBIGEO
+    // GET: Obtener una cita por DNI
     @GetMapping("/buscar")
-    public Cita obtenerCitaPorDniYUbigeo(@RequestParam String dni, @RequestParam String ubigeo) {
-        return citaRepository.findByNumeroDocumentoAndUbigeo(dni, ubigeo)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró una cita con el DNI y UBIGEO proporcionados."));
+    public Cita obtenerCitaPorDni(@RequestParam String dni) {
+        return citaRepository.findByNumeroDocumento(dni)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró una cita con el DNI proporcionado."));
     }
 }

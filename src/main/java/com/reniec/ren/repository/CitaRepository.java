@@ -7,5 +7,6 @@ import java.util.Optional;
 import com.reniec.ren.modelo.Cita;
 
 public interface CitaRepository extends JpaRepository<Cita, Long> {
-    Optional<Cita> findByNumeroDocumentoAndUbigeo(String numeroDocumento, String ubigeo);
+    Optional<Cita> findByNumeroDocumento(String numeroDocumento);
 }
+
