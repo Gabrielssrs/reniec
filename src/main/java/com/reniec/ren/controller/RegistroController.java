@@ -7,8 +7,8 @@ import com.reniec.ren.modelo.Registro;
 import com.reniec.ren.repository.RegistroRepository;
 
 @RestController
-@RequestMapping("/registro")
-@CrossOrigin(origins = "*") 
+@RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class RegistroController {
 
     @Autowired
@@ -18,5 +18,10 @@ public class RegistroController {
     public String registrarValidacion(@RequestBody Registro nuevaValidacion) {
         validacionRepository.save(nuevaValidacion);
         return "Registro registrada correctamente con ID: " + nuevaValidacion.getId_validacion();
+    }
+    
+    @GetMapping("/validar")
+    public boolean validarRegistro(@RequestParam String dni, @RequestParam String ubigeo) {
+        return validacionRepository.existsByDniAndUbigeo(dni, ubigeo);
     }
 }
